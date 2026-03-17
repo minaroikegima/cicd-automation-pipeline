@@ -27,3 +27,6 @@ Visit http://localhost:8080 in your browser.
 
 ## CI Status
 ![CI](https://github.com/minaroikegima/cicd-automation-pipeline/actions/workflows/ci.yml/badge.svg)
+
+## Project  Status
+![CI](https://github.com/minaroikegima/cicd-automation-pipeline/actions/workflows/ci.yml/badge.svg)
