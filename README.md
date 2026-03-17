@@ -1,5 +1,7 @@
 # CI/CD Automation Pipeline
 
+![CI](https://github.com/minaroikegima/cicd-automation-pipeline/actions/workflows/ci.yml/badge.svg)
+
 A GitHub Actions CI/CD pipeline that automates build, test, security scanning, and Docker deployment workflows for containerized applications.
 
 ## What This Project Does
@@ -14,6 +16,26 @@ A GitHub Actions CI/CD pipeline that automates build, test, security scanning, a
 - Python (Flask)
 - pytest
 
+## Pipeline Flow
+```
+Push Code to GitHub
+        │
+        ▼
+┌───────────────┐
+│   Run Tests   │ ── ❌ FAIL → Pipeline stops
+│   (pytest)    │
+└───────┬───────┘
+        │ ✅ PASS
+        ▼
+┌───────────────┐
+│  Build Docker │ ── ❌ FAIL → Pipeline stops
+│    Image      │
+└───────┬───────┘
+        │ ✅ PASS
+        ▼
+   Code is Good!
+```
+
 ## How to Run Locally
 ```bash
 cd app/src
@@ -22,11 +44,17 @@ python3 app.py
 ```
 Visit http://localhost:8080 in your browser.
 
-## Project Status
-![CI](https://github.com/YOUR_USERNAME/cicd-automation-pipeline/actions/workflows/ci.yml/badge.svg)
-
-## CI Status
-![CI](https://github.com/minaroikegima/cicd-automation-pipeline/actions/workflows/ci.yml/badge.svg)
-
-## Project  Status
-![CI](https://github.com/minaroikegima/cicd-automation-pipeline/actions/workflows/ci.yml/badge.svg)
+## Project Structure
+```
+project4-cicd/
+├── .github/
+│   └── workflows/
+│       └── ci.yml        # Pipeline definition
+├── app/
+│   ├── src/
+│   │   └── app.py        # Flask application
+│   └── tests/
+│       └── test_app.py   # Unit tests
+└── docker/
+    └── Dockerfile        # Container definition
+```
